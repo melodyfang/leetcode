@@ -1,0 +1,45 @@
+{
+  "sync.gist": "940e25cbfe45998cc1ccd1b8852b1f9c",
+  "sync.host": "",
+  "sync.pathPrefix": "",
+  "sync.quietSync": false,
+  "sync.askGistName": false,
+  "sync.removeExtensions": true,
+  "sync.syncExtensions": true,
+  "sync.autoDownload": false,
+  "sync.autoUpload": false,
+  "sync.lastUpload": "",
+  "sync.lastDownload": "",
+  "sync.forceDownload": false,
+  "gitlens.advanced.messages": {
+      "suppressShowKeyBindingsNotice": true
+  },
+  "workbench.colorTheme": "Default Light+",
+  "workbench.editor.enablePreview": false,
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "liveServer.settings.donotShowInfoMsg": true,
+  "editor.fontSize": 14,
+  "gitlens.historyExplorer.enabled": true,
+  "files.associations": {
+      "*.cjson": "jsonc",
+      "*.wxss": "css",
+      "*.wxs": "javascript"
+  },
+  "emmet.includeLanguages": {
+      "wxml": "html"
+  },
+  "minapp-vscode.disableAutoConfig": true,
+  "editor.tabSize": 2,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "gitlens.views.fileHistory.enabled": true,
+  "gitlens.views.lineHistory.enabled": true,
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "powermode.presets": "simple-rift",
+  "window.zoomLevel": 0,
+  "explorer.confirmDragAndDrop": false,
+  "workbench.iconTheme": "vscode-icons",
+  "python.jediEnabled": false,
+  "javascript.updateImportsOnFileMove.enabled": "always"
+}
