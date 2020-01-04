@@ -8,72 +8,43 @@
 </head>
 <body>
 <script>
-var hasGroupsSizeX11 = function(deck) {
-    const obj = {}
-    deck.forEach(d => {
-      if (obj[d]) {
-        obj[d].push(d)
-      } else {
-        obj[d] = [d]
-      }
-    })
 
-    const vals = Object.values(obj)
-    let min = Number.MAX_SAFE_INTEGER
-    for (let i = 0; i < vals.length; i++) {
-      if (min > vals[i].length) {
-        min = vals[i].length
-      }
-    }
+  // 输入: flowerbed = [1,0,0,0,1], n = 1
+  // 输出: True
 
-    if (vals.length === 1 && vals[0].length === 1) {
-      return false
-    }
+  [1,0,0,0,1], n = 1 // 3个连续的0
+  [1,0,0,0,0,0,1], n = 2 // 5个连续的0
+  [1,0,0,0,0,0,0,0,1], n = 3 // 7个连续的0
+  [1,0,0,0,0,0,0,0,0,0,1], n = 4 // 9个连续的0
 
-    for (let i = 0; i < vals.length; i++) {
-      if (vals[i].length % min !== 0) {
-        return false
-      }
-    }
-    return true
-};
 
-function hasGroupsSizeX (arr) {
-  arr.sort((a, b) => a - b)
-    let min = Number.MIN_SAFE_INTEGER
-    let dest = []
-    let result = true
-    for (let i = 0, tmp = []; i < arr.length; i++) {
-      tmp.push(arr[i])
-      for (let j = i + 1; j < arr.length - 1; j++) {
-        if (arr[i] === arr[j]) {
-          tmp.push(arr[j])
-        } else {
-          if (min > tmp.length) {
-            min = tmp.length
-          }
-          dest.push(tmp.slice())
-          tmp.length = 0
-          i = j
-          break
+  [0,0,1,0,1] n = 1 // 2个连续的0
+  [0,0,0,0,1,0,1] n = 2 // 4个连续的0
+
+
+  // 输入: flowerbed = [1,0,0,0,1], n = 2
+  // 输出: False
+  function canPlaceFlowers (arr, n) {
+    let count = 0
+    const condition = arr[0] === 0 ? 2 * n : 2 * n + 1
+    for(let i = 0; i < arr.length; i++) {
+      if (arr[i] === 0) {
+        count++
+        if (count >= condition) {
+          return true
         }
+      } else {
+        count = 0
       }
     }
+    return false
+  }
 
-    dest.every(item => {
-      if (item.length % min !== 0) {
-        result = false
-        return false
-      }
-    })
-    return result
-}
-
-console.log(hasGroupsSizeX([1,2,3,4,4,3,2,1]))
-console.log(hasGroupsSizeX([1,1,1,2,2,2,3,3]))
-console.log(hasGroupsSizeX([1]))
-console.log(hasGroupsSizeX([1, 1]))
-
+  const arr = [0,0,1,0,1]
+  // const arr = [1,0,0,0,1]
+  // const arr = [1,0,1,0,1,0,1]
+  // const arr = [1,0,0,0,1]
+  console.log(canPlaceFlowers(arr, 1))
 </script>
 </body>
 </html>
