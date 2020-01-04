@@ -7,7 +7,7 @@
  */
 export default function(arr, n) {
     let max = 0
-    for (let i = 0; i < arr.length - 1; i++) {
+    for (let i = 0, len = arr.length - 1; i < len; i++) {
       if (arr[i] === 0) {
         if (i === 0 && arr[1] === 0) {
           max++
@@ -18,9 +18,5 @@ export default function(arr, n) {
         }
       }
     }
-    if (n <= max) {
-      return true
-    } else {
-      return false
-    }
+    return max >= n
 };

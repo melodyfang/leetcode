@@ -8,43 +8,27 @@
 </head>
 <body>
 <script>
-
-  // 输入: flowerbed = [1,0,0,0,1], n = 1
-  // 输出: True
-
-  [1,0,0,0,1], n = 1 // 3个连续的0
-  [1,0,0,0,0,0,1], n = 2 // 5个连续的0
-  [1,0,0,0,0,0,0,0,1], n = 3 // 7个连续的0
-  [1,0,0,0,0,0,0,0,0,0,1], n = 4 // 9个连续的0
-
-
-  [0,0,1,0,1] n = 1 // 2个连续的0
-  [0,0,0,0,1,0,1] n = 2 // 4个连续的0
-
-
-  // 输入: flowerbed = [1,0,0,0,1], n = 2
-  // 输出: False
-  function canPlaceFlowers (arr, n) {
-    let count = 0
-    const condition = arr[0] === 0 ? 2 * n : 2 * n + 1
+  function sort(arr) {
+    let idx = 0
     for(let i = 0; i < arr.length; i++) {
-      if (arr[i] === 0) {
-        count++
-        if (count >= condition) {
-          return true
+      let min = Number.MAX_SAFE_INTEGER
+      // 找到这一轮比较的最小值
+      for(let j = i; j < arr.length; j++) {
+        if (min > arr[j]) {
+          min = arr[j]
+          idx = j
         }
-      } else {
-        count = 0
       }
+      let tmp = arr[i]
+      arr[i] = min
+      arr[idx] = tmp
     }
-    return false
+    return arr
   }
 
-  const arr = [0,0,1,0,1]
-  // const arr = [1,0,0,0,1]
-  // const arr = [1,0,1,0,1,0,1]
-  // const arr = [1,0,0,0,1]
-  console.log(canPlaceFlowers(arr, 1))
+  const arr = [3,5,6,9,1,2]
+  console.log(sort(arr))
+
 </script>
 </body>
 </html>

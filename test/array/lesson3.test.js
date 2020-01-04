@@ -1,5 +1,5 @@
-import flower from '../../code/array/lesson3'
+// import flower from '../../code/array/lesson3'
 
-test('flower:[1,0,0,0,1,0,0]', () => {
-  expect(flower([1,0,0,0,1,0,0], 1)).toBe(true)
-})
+// test('flower:[1,0,0,0,1,0,0]', () => {
+//   expect(flower([1,0,0,0,1,0,0], 2)).toBe(true)
+// })
