@@ -8,26 +8,25 @@
 </head>
 <body>
 <script>
-  var sortArrayByParityII = function(arr) {
-  const jishu = []
-  const oushu = []
-  const res = []
-    for(let i = 0; i < arr.length; i++) {
-      if (arr[i] % 2 === 0) {
-        oushu.push(arr[i])
-      } else {
-        jishu.push(arr[i])
-      }
+function firstMissingPositive (arr) {
+  // 过滤掉非正整数
+  arr = arr.filter(item => item > 0)
+  console.log(arr)
+  arr.sort((a, b) => a - b)
+  if (arr[0] !== 1) {
+    return 1
+  }
+  console.log(arr)
+  for(let i = 0; i < arr.length - 1; i++) {
+    if (arr[i + 1] - arr[i] > 1) {
+      return arr[i] + 1
     }
-   
-    for(let i = 0; i < jishu.length; i++) {
-      res.push(jishu[i])
-      res.push(oushu[i])
-    }
-    return res
-};
-
-console.log(sortArrayByParityII([4,2,5,7]))
+  }
+  // 说明数组所有元素都是连续的
+  return arr.pop() + 1
+}
+// console.log(firstMissingPositive([1, 2, 3, 4]))
+console.log(firstMissingPositive([3,4,-1,1]))
   
 </script>
 </body>
