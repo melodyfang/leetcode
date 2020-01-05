@@ -1,5 +1,6 @@
 /**
  * 682. 棒球比赛
+ * 思路：利用数组的堆栈结构
  * @see https://leetcode-cn.com/problems/baseball-game/
  * @param {string[]} ops
  * @return {number}
