@@ -8,33 +8,43 @@
 </head>
 <body>
 <script>
-function firstMissingPositive (arr) {
-  // 过滤掉非正整数
-  arr = arr.filter(item => item > 0)
-  let tmp
+var calPoints = function(arr) {
+  let sum = 0
+  let curr = 0
+  let tmp = []
   for(let i = 0; i < arr.length; i++) {
-    for(let j = i; j < arr.length; j++) {
-      if (arr[i] > arr[j]) {
-        tmp = arr[i]
-        arr[i] = arr[j]
-        arr[j] = tmp
-      }
+    if (Number.isInteger(parseInt(arr[i]))) {
+      sum += Number(arr[i])
+      tmp.push(Number(arr[i]))
     }
-    if (arr[0] !== 1) {
-      return 1
-    }
-    if (i >= 1) {
-      if (arr[i] - arr[i - 1] > 1) {
-        return arr[i - 1] + 1
-      }
-      // 说明数组所有元素都是连续的
-      return arr.pop() + 1
+    let len = tmp.length
+    switch(arr[i]) {
+      case '+':
+        if (len > 0) {
+          curr = tmp[len - 1] + (tmp[len - 2] || 0)
+          tmp.push(curr)
+          sum += curr
+        }
+        break
+      case 'D':
+        if (len > 0) {
+          curr = tmp[len - 1] * 2
+          tmp.push(curr)
+          sum += curr
+        }
+        break
+      case 'C':
+        const last = tmp.pop()
+        sum -= last
+        break
     }
   }
-}
-// console.log(firstMissingPositive([1, 2, 3, 4]))
-console.log(firstMissingPositive([3,4,-1,1]))
-  
+
+  return sum
+};
+
+console.log(calPoints(["5","2","C","D","+"]))
+console.log(calPoints(["5","-2","4","C","D","9","+","+"]))
 </script>
 </body>
 </html>
