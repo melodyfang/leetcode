@@ -8,24 +8,27 @@
 </head>
 <body>
 <script>
-  function getMax(arr) {
-    if (arr.length < 2) {
-      return 0
-    }
-    arr.sort((a, b) => a - b)
-    let max = Number.MIN_SAFE_INTEGER
+  var sortArrayByParityII = function(arr) {
+  const jishu = []
+  const oushu = []
+  const res = []
     for(let i = 0; i < arr.length; i++) {
-      const delta = arr[i + 1] - arr[i]
-      if (max < delta) {
-        max = delta
+      if (arr[i] % 2 === 0) {
+        oushu.push(arr[i])
+      } else {
+        jishu.push(arr[i])
       }
     }
-    return max
-  }
+   
+    for(let i = 0; i < jishu.length; i++) {
+      res.push(jishu[i])
+      res.push(oushu[i])
+    }
+    return res
+};
 
-  const arr = [3,5,6,9,1,2, 100]
-  console.log(getMax(arr))
-
+console.log(sortArrayByParityII([4,2,5,7]))
+  
 </script>
 </body>
 </html>
