@@ -11,19 +11,26 @@
 function firstMissingPositive (arr) {
   // 过滤掉非正整数
   arr = arr.filter(item => item > 0)
-  console.log(arr)
-  arr.sort((a, b) => a - b)
-  if (arr[0] !== 1) {
-    return 1
-  }
-  console.log(arr)
-  for(let i = 0; i < arr.length - 1; i++) {
-    if (arr[i + 1] - arr[i] > 1) {
-      return arr[i] + 1
+  let tmp
+  for(let i = 0; i < arr.length; i++) {
+    for(let j = i; j < arr.length; j++) {
+      if (arr[i] > arr[j]) {
+        tmp = arr[i]
+        arr[i] = arr[j]
+        arr[j] = tmp
+      }
+    }
+    if (arr[0] !== 1) {
+      return 1
+    }
+    if (i >= 1) {
+      if (arr[i] - arr[i - 1] > 1) {
+        return arr[i - 1] + 1
+      }
+      // 说明数组所有元素都是连续的
+      return arr.pop() + 1
     }
   }
-  // 说明数组所有元素都是连续的
-  return arr.pop() + 1
 }
 // console.log(firstMissingPositive([1, 2, 3, 4]))
 console.log(firstMissingPositive([3,4,-1,1]))
