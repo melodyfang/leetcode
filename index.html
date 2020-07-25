@@ -15,10 +15,26 @@
 // console.log(result)
 
 
-var reg = /\B(?=(?:\d{3})+$)/g
-var s = '10000'
-t = s.replace(reg, ',')
-console.log(t)
+// var reg = /\B(?=(?:\d{3})+$)/g
+// var s = '10000'
+// t = s.replace(reg, ',')
+// console.log(t)
+
+var arr = [0, 8, 9, 0, 3, -3]
+
+var zi = 0 // 假设为0元素的下标是0
+let tmp
+
+for (let i = 0; i < arr.length; i++) {
+  if (arr[i] !== 0) {
+    tmp = arr[i]
+    arr[i] = arr[zi]
+    arr[zi] = tmp
+    zi++
+  }
+}
+
+console.log(arr)
 </script>
 </body>
 </html>
